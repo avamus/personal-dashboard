@@ -2,7 +2,7 @@
 
 import React from "react"
 import Image from "next/image"
-import { Target, FileDown, RefreshCw, Star, TrendingUp, Zap, Award, Info, ChevronRight } from "lucide-react"
+import { Info, ChevronRight, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
@@ -265,140 +265,125 @@ const performanceMetrics = [
     tips: "Consider implementing a CRM system to streamline your follow-up process.",
   },
 ]
-
 export default function DashboardPage() {
-  const [showInfo, setShowInfo] = React.useState(Array(focusAreas.length).fill(false))
-  const [expandedCategory, setExpandedCategory] = React.useState<string | null>(null)
+  const [showInfo, setShowInfo] = React.useState(Array(focusAreas.length).fill(false));
+  const [expandedCategory, setExpandedCategory] = React.useState<string | null>(null);
+  const handleDownloadPDF = () => {
+    alert('PDF download started...');
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8 rounded-xl shadow-[0_0_15px_rgba(0,128,0,0.1)]">
-      <div className="mx-auto max-w-7xl space-y-8">
-        <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0">
-          <div>
-            <div className="flex items-center mb-4">
-              <div className="flex items-center">
-                <Image
-                  src="https://res.cloudinary.com/drkudvyog/image/upload/v1739377263/My_ISNG_Profile_icon_duha_zzzrdn.png"
-                  alt="ISNG Profile Icon"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8 mr-3"
-                />
-                <h1 className="text-3xl font-bold text-black">My ISNG Profile</h1>
-              </div>
-            </div>
-            <p className="text-xl text-gray-700 mt-4">
-              Your ISNG (Integrator, Synergist, Nurturer, Genius) profile is based on your responses to the assessment.
-              Each category represents a different aspect of your real estate personality and approach.
-            </p>
-          </div>
-        </div>
-
-        <Card className="bg-white shadow-lg rounded-2xl overflow-hidden">
-          <CardHeader className="bg-white p-6 shadow-lg rounded-2xl mb-8">
-            <CardContent className="p-6 mt-4">
-              <div className="grid gap-6">
-                <div className="rounded-3xl p-5 shadow-[0_0_15px_rgba(0,0,0,0.1)] bg-white">
-                  <div className="flex items-center mb-3">
-                  <div className="flex items-center gap-2">
-  <div className="flex items-center gap-2">
-    <Image
-      src="https://res.cloudinary.com/drkudvyog/image/upload/v1739377263/My_ISNG_Profile_icon_duha_zzzrdn.png"
-      alt="ISNG Breakdown Icon"
-      width={24}
-      height={24}
-      className="w-6 h-6"
-    />
-    <h3 className="text-2xl font-bold text-black">Your ISNG Breakdown</h3>
-  </div>
-  <Info className="w-5 h-5 text-[#5b06be] cursor-pointer" />
-</div>
-                    <Popover>
-                      <PopoverTrigger>
-                        <Info className="w-5 h-5 text-[#5b06be] cursor-pointer" />
-                      </PopoverTrigger>
-                      <PopoverContent className="w-80 p-6">
-                        <div className="flex items-start space-x-4">
-                          <Info className="w-6 h-6 text-[#5b06be] flex-shrink-0 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-[#5b06be] mb-2">ISNG Score Interpretation</h4>
-                            <p className="text-sm text-gray-700 leading-relaxed">
-                              The percentages indicate your strength in each category:
-                            </p>
-                            <ul className="mt-2 space-y-1 text-sm text-gray-700 list-disc list-inside">
-                              <li>Higher percentages: Areas where you naturally excel</li>
-                              <li>
-                                Lower percentages: Potential areas for growth and development in your real estate career
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </PopoverContent>
-                    </Popover>
-                  </div>
-                  <div className="space-y-4 relative">
-                    <div className="flex justify-end space-x-4 mb-4">
-                      <Button className="bg-[#5b06be] hover:bg-[#4a05a0] text-white font-semibold rounded-full px-6 py-2 flex items-center">
-                        <FileDown className="w-4 h-4 mr-2" />
+    <div className="h-full w-full bg-white overflow-auto p-4">
+      <div className="w-full">  
+        <div>
+          <div className="p-0 m-0">
+            <div className="p-0 m-0">
+                <div className="grid gap-2">
+                  <div className="bg-white rounded-xl p-2 border border-[#ddd] w-full">
+                  {/* Header and buttons */}
+                  <div className="flex items-center justify-between mb-2 flex-wrap md:flex-nowrap gap-2">
+                    <div className="flex items-center gap-2">
+                      <Image
+                        src="https://res.cloudinary.com/drkudvyog/image/upload/v1739891270/Your_ISNG_Breakdown_icon_duha_iwpwyf.png"
+                        alt="ISNG Breakdown Icon"
+                        width={20}
+                        height={20}
+                        className="w-5 h-5"
+                      />
+                      <h3 className="text-[21px] font-bold text-gray-900">Your ISNG Breakdown</h3>
+                      <Popover>
+                        <PopoverTrigger>
+                          <Info className="w-4 h-4 text-[#5b06be] cursor-pointer" />
+                        </PopoverTrigger>
+                        <PopoverContent className="w-72 p-4 bg-white rounded-xl border border-[#ddd]">
+                          {/* Popover content */}
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+                    <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap">
+                      <Button 
+                        className="bg-[#5b06be] hover:bg-[#4a05a0] text-white font-semibold rounded-full px-3 py-1.5 flex items-center text-[15px]"
+                        onClick={handleDownloadPDF}
+                      >
+                        <Image 
+                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1739899165/Download_icon_white_nsird3.png"
+                          alt="Download Icon"
+                          width={16}
+                          height={16}
+                          className="w-4 h-4 mr-1.5"
+                        />
                         Download PDF
                       </Button>
-                      <Button className="bg-gradient-to-r from-[#fbb350] to-[#f89d2a] hover:from-[#faa240] hover:to-[#f78c1a] text-white font-semibold rounded-full px-8 py-4 flex items-center justify-center group transition-all duration-300 shadow-md hover:shadow-lg text-lg">
-                        <RefreshCw className="w-6 h-6 mr-3 group-hover:rotate-180 transition-transform duration-500" />
-                        <div className="flex flex-col items-start">
-                          <span className="text-base font-bold">Retake Test</span>
-                          <span className="text-sm opacity-90">10 credits</span>
+                      <Button className="bg-gradient-to-r from-[#fbb350] to-[#f89d2a] hover:from-[#faa240] hover:to-[#f78c1a] text-white font-semibold rounded-full px-5 py-2 flex items-center justify-center group transition-all duration-300 shadow-md hover:shadow-lg text-[15px]">
+                        <Image 
+                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1739898780/Retake_test_icon_white_rok0gd.png"
+                          alt="Retake Test Icon"
+                          width={16}
+                          height={16}
+                          className="w-4 h-4 mr-1.5 group-hover:rotate-180 transition-transform duration-500"
+                        />
+                        <div className="flex flex-col items-center -space-y-1">
+                          <span className="text-[15px] font-semibold">Retake Test</span>
+                          <span className="text-xs opacity-90">10 credits</span>
                         </div>
                       </Button>
                     </div>
+                  </div>
+                  <p className="text-[15px] font-semibold text-gray-600 mb-3">
+                    Discover your unique blend of ISNG traits and how they shape your real estate success. Each trait contributes to your personal approach and effectiveness in the industry.
+                  </p>
+                  
+                  {/* Profile cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
                     {Object.entries(profile)
                       .sort(([type]) => (type === "nurturer" ? -1 : 1))
                       .map(([type, { score, description, explanation }]) => (
                         <div
                           key={type}
-                          className={`bg-gradient-to-br from-white to-gray-50 rounded-lg p-4 border border-gray-100 transition-all duration-300 ${
+                          className={`bg-gradient-to-br from-white to-gray-50 rounded-lg p-3 border border-[#ddd] transition-all duration-300 ${
                             expandedCategory === type ? "shadow-xl relative z-10" : expandedCategory ? "opacity-25" : ""
                           }`}
                         >
-                          <div className="mb-3">
-                            <div className="flex items-center gap-2 mb-2">
+                          <div className="mb-2">
+                            <div className="flex items-center gap-2 mb-1">
                               {type === "nurturer" && (
                                 <Image
                                   src="https://res.cloudinary.com/drkudvyog/image/upload/v1739294075/Nurturer_icon_green_ccioe1.png"
                                   alt="Nurturer Icon"
-                                  width={32}
-                                  height={32}
-                                  className="w-8 h-8 object-contain"
+                                  width={24}
+                                  height={24}
+                                  className="w-6 h-6 object-contain"
                                 />
                               )}
                               {type === "integrator" && (
                                 <Image
                                   src="https://res.cloudinary.com/drkudvyog/image/upload/v1739294888/Integrator_icon_purple_xf50hd.png"
                                   alt="Integrator Icon"
-                                  width={32}
-                                  height={32}
-                                  className="w-8 h-8 object-contain"
+                                  width={24}
+                                  height={24}
+                                  className="w-6 h-6 object-contain"
                                 />
                               )}
                               {type === "synergist" && (
                                 <Image
                                   src="https://res.cloudinary.com/drkudvyog/image/upload/v1739295223/Synergist_icon_blue_gvi8zp.png"
                                   alt="Synergist Icon"
-                                  width={32}
-                                  height={32}
-                                  className="w-8 h-8 object-contain"
+                                  width={24}
+                                  height={24}
+                                  className="w-6 h-6 object-contain"
                                 />
                               )}
                               {type === "genius" && (
                                 <Image
                                   src="https://res.cloudinary.com/drkudvyog/image/upload/v1739295658/Genius_icon_yellow_d4fjhj.png"
                                   alt="Genius Icon"
-                                  width={32}
-                                  height={32}
-                                  className="w-8 h-8 object-contain"
+                                  width={24}
+                                  height={24}
+                                  className="w-6 h-6 object-contain"
                                 />
                               )}
                               <span
-                                className={`text-lg font-bold capitalize ${
+                                className={`text-[19px] font-black capitalize ${
                                   type === "nurturer"
                                     ? "text-green-600"
                                     : type === "integrator"
@@ -411,50 +396,46 @@ export default function DashboardPage() {
                                 {type}
                               </span>
                             </div>
-                            <p className="text-sm text-gray-600 mt-2">
-                              {type === "nurturer"
-                                ? "Nurturers are empathetic, supportive, and focused on building strong relationships in their real estate dealings."
-                                : type === "integrator"
-                                  ? "Integrators excel at bringing together different aspects of real estate deals and coordinating between various parties."
-                                  : type === "synergist"
-                                    ? "Synergists are skilled at creating harmonious collaborations and finding win-win solutions in real estate transactions."
-                                    : "Geniuses in real estate have a knack for innovative problem-solving and thinking outside the box to close deals."}
+                            <p className="text-[15px] font-semibold text-gray-600 mt-1">
+                              {description}
                             </p>
                           </div>
 
-                          <div className="flex justify-between items-center mb-1">
-                            <span className="text-sm font-medium text-gray-600">Score</span>
-                            <span
-                              className={`text-base font-bold ${
-                                type === "nurturer"
-                                  ? "text-green-600"
-                                  : type === "integrator"
-                                    ? "text-[#5b06be]"
-                                    : type === "synergist"
-                                      ? "text-blue-600"
-                                      : "text-[#fbb350]"
-                              }`}
-                            >
-                              {score}%
-                            </span>
-                          </div>
-                          <Progress
-  value={score}
-  className={`h-2 mb-2 bg-[#F4F4F5] ${
-    type === "nurturer"
-      ? "[&>div]:bg-green-500"
-      : type === "integrator"
-        ? "[&>div]:bg-[#5b06be]"
-        : type === "synergist"
-          ? "[&>div]:bg-blue-500"
-          : "[&>div]:bg-[#fbb350]"
-  }`}
-/>
-                          <div className="mt-2">
+                          <div className="flex flex-col">
+                            <div className="mb-3">
+                              <div className="flex justify-between items-center mb-1">
+                                <span className="text-[15px] font-semibold text-gray-600">Score</span>
+                                <span
+                                  className={`text-[15px] font-semibold ${
+                                    type === "nurturer"
+                                      ? "text-green-600"
+                                      : type === "integrator"
+                                        ? "text-[#5b06be]"
+                                        : type === "synergist"
+                                          ? "text-blue-600"
+                                          : "text-[#fbb350]"
+                                  }`}
+                                >
+                                  {score}%
+                                </span>
+                              </div>
+                              <Progress
+                                value={score}
+                                className={`h-1.5 bg-[#F4F4F5] ${
+                                  type === "nurturer"
+                                    ? "[&>div]:bg-green-500"
+                                    : type === "integrator"
+                                      ? "[&>div]:bg-[#5b06be]"
+                                      : type === "synergist"
+                                        ? "[&>div]:bg-blue-500"
+                                        : "[&>div]:bg-[#fbb350]"
+                                }`}
+                              />
+                            </div>
                             <Button
                               variant="outline"
                               size="sm"
-                              className={`w-full text-sm py-2 px-4 rounded-full mt-3 ${
+                              className={`w-full text-[15px] py-1.5 px-3 rounded-full ${
                                 type === "nurturer"
                                   ? "bg-green-500 hover:bg-green-600 text-white border-green-500 hover:border-green-600"
                                   : type === "integrator"
@@ -470,9 +451,11 @@ export default function DashboardPage() {
                               {expandedCategory === type ? "Hide Detailed Analysis" : "View Detailed Analysis"}
                             </Button>
                           </div>
+                          
+                          {/* Expanded detailed analysis */}
                           {expandedCategory === type && (
                             <div
-                              className={`mt-6 text-sm text-gray-700 bg-white p-6 rounded-xl shadow-lg relative z-20 mx-auto max-w-[98%] ${
+                              className={`mt-4 text-[15px] font-semibold text-gray-700 bg-white p-4 rounded-xl relative z-20 w-full ${
                                 type === "nurturer"
                                   ? "bg-green-50 border-green-200"
                                   : type === "integrator"
@@ -483,21 +466,21 @@ export default function DashboardPage() {
                               } border-2`}
                             >
                               <h5
-                                className={`text-2xl font-bold mb-4 ${
+                                className={`text-[19px] font-black mb-3 ${
                                   type === "nurturer"
-                                    ? "text-green-700"
+                                    ? "text-green-600"
                                     : type === "integrator"
-                                      ? "text-purple-700"
+                                      ? "text-purple-600"
                                       : type === "synergist"
-                                        ? "text-blue-700"
-                                        : "text-yellow-700"
+                                        ? "text-blue-600"
+                                        : "text-yellow-600"
                                 }`}
                               >
                                 Detailed Analysis
                               </h5>
-                              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                 <Card
-                                  className={`border-l-4 ${
+                                  className={`border-l-4 h-full ${
                                     type === "nurturer"
                                       ? "border-l-green-500"
                                       : type === "integrator"
@@ -507,32 +490,72 @@ export default function DashboardPage() {
                                           : "border-l-yellow-500"
                                   }`}
                                 >
-                                  <CardHeader>
+                                  <CardHeader className="py-2">
                                     <CardTitle
-                                      className={`flex items-center ${
+                                      className={`flex items-center text-[15px] ${
                                         type === "nurturer"
-                                          ? "text-green-700"
+                                          ? "text-green-600"
                                           : type === "integrator"
-                                            ? "text-purple-700"
+                                            ? "text-purple-600"
                                             : type === "synergist"
-                                              ? "text-blue-700"
-                                              : "text-yellow-700"
+                                              ? "text-blue-600"
+                                              : "text-yellow-600"
                                       }`}
                                     >
-                                      <Lightbulb className="w-6 h-6 mr-2" />
+                                      {type === "nurturer" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340415/Key_Strengths_Action_Steps_icon_green_agowwc.png"
+                                          alt="Key Strengths Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : type === "integrator" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340416/Key_Strengths_Action_Steps_icon_purple_l6tzls.png"
+                                          alt="Key Strengths Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : type === "synergist" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340415/Key_Strengths_Action_Steps_icon_blue_p0fynd.png"
+                                          alt="Key Strengths Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340416/Key_Strengths_Action_Steps_icon_yellow_zwx47w.png"
+                                          alt="Key Strengths Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      )}
                                       Key Strengths
                                     </CardTitle>
                                   </CardHeader>
-                                  <CardContent>
-                                    <ul className="space-y-2">
+                                  <CardContent className="p-2">
+                                    <ul className="space-y-1.5">
                                       {explanation
                                         .split("\n\n")[1]
                                         .split("\n")
                                         .slice(1)
                                         .map((strength, idx) => (
                                           <li key={idx} className="flex items-start">
-                                            <ChevronRight className="w-4 h-4 mr-2 text-green-500 flex-shrink-0 mt-1" />
-                                            <span>{strength.replace(/^\d+\.\s/, "")}</span>
+                                            <ChevronRight className={`w-2.5 h-2.5 mr-1 flex-shrink-0 mt-1 ${
+                                              type === "nurturer"
+                                                ? "text-green-600"
+                                                : type === "integrator"
+                                                  ? "text-purple-600"
+                                                  : type === "synergist"
+                                                    ? "text-blue-600"
+                                                    : "text-yellow-600"
+                                            }`} />
+                                            <span className="text-xs leading-tight">{strength.replace(/^\d+\.\s/, "")}</span>
                                           </li>
                                         ))}
                                     </ul>
@@ -540,7 +563,7 @@ export default function DashboardPage() {
                                 </Card>
 
                                 <Card
-                                  className={`border-l-4 ${
+                                  className={`border-l-4 h-full ${  
                                     type === "nurturer"
                                       ? "border-l-green-500"
                                       : type === "integrator"
@@ -550,31 +573,71 @@ export default function DashboardPage() {
                                           : "border-l-yellow-500"
                                   }`}
                                 >
-                                  <CardHeader>
+                                  <CardHeader className="py-2">
                                     <CardTitle
-                                      className={`flex items-center ${
+                                      className={`flex items-center gap-2 text-[15px] ${
                                         type === "nurturer"
-                                          ? "text-green-700"
+                                          ? "text-green-600"
                                           : type === "integrator"
-                                            ? "text-purple-700"
+                                            ? "text-purple-600"
                                             : type === "synergist"
-                                              ? "text-blue-700"
-                                              : "text-yellow-700"
+                                              ? "text-blue-600"
+                                              : "text-yellow-600"
                                       }`}
                                     >
-                                      <Target className="w-6 h-6 mr-2" />
+                                      {type === "nurturer" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340415/Areas_for_Leverage_icon_green_kenaxa.png"
+                                          alt="Areas for Leverage Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : type === "integrator" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340415/Areas_for_Leverage_icon_purple_z1g5nr.png"
+                                          alt="Areas for Leverage Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : type === "synergist" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340414/Areas_for_Leverage_icon_blue_ahj9vz.png"
+                                          alt="Areas for Leverage Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340415/Areas_for_Leverage_icon_yellow_wxmytu.png"
+                                          alt="Areas for Leverage Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      )}
                                       Areas for Leverage
                                     </CardTitle>
                                   </CardHeader>
-                                  <CardContent>
-                                    <ul className="space-y-2">
+                                  <CardContent className="p-2">
+                                    <ul className="space-y-1.5">
                                       {explanation
                                         .split("\n\n")[2]
                                         .split("\n")
                                         .map((area, idx) => (
                                           <li key={idx} className="flex items-start">
-                                            <ChevronRight className="w-4 h-4 mr-2 text-blue-500 flex-shrink-0 mt-1" />
-                                            <span>{area.replace(/^•\s/, "")}</span>
+                                            <ChevronRight className={`w-3 h-3 mr-1 flex-shrink-0 mt-0.5 ${
+                                              type === "nurturer"
+                                                ? "text-green-600"
+                                                : type === "integrator"
+                                                  ? "text-purple-600"
+                                                  : type === "synergist"
+                                                    ? "text-blue-600"
+                                                    : "text-yellow-600"
+                                            }`} />
+                                            <span className="text-xs leading-tight">{area.replace(/^•\s/, "")}</span>
                                           </li>
                                         ))}
                                     </ul>
@@ -582,7 +645,7 @@ export default function DashboardPage() {
                                 </Card>
 
                                 <Card
-                                  className={`border-l-4 ${
+                                  className={`border-l-4 h-full ${  
                                     type === "nurturer"
                                       ? "border-l-green-500"
                                       : type === "integrator"
@@ -592,31 +655,71 @@ export default function DashboardPage() {
                                           : "border-l-yellow-500"
                                   }`}
                                 >
-                                  <CardHeader>
+                                  <CardHeader className="py-2">
                                     <CardTitle
-                                      className={`flex items-center ${
+                                      className={`flex items-center gap-2 text-[15px] ${
                                         type === "nurturer"
-                                          ? "text-green-700"
+                                          ? "text-green-600"
                                           : type === "integrator"
-                                            ? "text-purple-700"
+                                            ? "text-purple-600"
                                             : type === "synergist"
-                                              ? "text-blue-700"
-                                              : "text-yellow-700"
+                                              ? "text-blue-600"
+                                              : "text-yellow-600"
                                       }`}
                                     >
-                                      <AlertTriangle className="w-6 h-6 mr-2" />
+                                      {type === "nurturer" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340416/Potential_Challenges_icon_green_af2fh9.png"
+                                          alt="Potential Challenges Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : type === "integrator" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340416/Potential_Challenges_icon_purple_dhhjbk.png"
+                                          alt="Potential Challenges Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : type === "synergist" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340416/Potential_Challenges_icon_blue_dwkyci.png"
+                                          alt="Potential Challenges Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340416/Potential_Challenges_icon_yellow_mffpx2.png"
+                                          alt="Potential Challenges Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      )}
                                       Potential Challenges
                                     </CardTitle>
                                   </CardHeader>
-                                  <CardContent>
-                                    <ul className="space-y-2">
+                                  <CardContent className="p-2">
+                                    <ul className="space-y-1.5">
                                       {explanation
                                         .split("\n\n")[3]
                                         .split("\n")
                                         .map((challenge, idx) => (
                                           <li key={idx} className="flex items-start">
-                                            <ChevronRight className="w-4 h-4 mr-2 text-yellow-500 flex-shrink-0 mt-1" />
-                                            <span>{challenge.replace(/^•\s/, "")}</span>
+                                            <ChevronRight className={`w-3 h-3 mr-1 flex-shrink-0 mt-0.5 ${
+                                              type === "nurturer"
+                                                ? "text-green-600"
+                                                : type === "integrator"
+                                                  ? "text-purple-600"
+                                                  : type === "synergist"
+                                                    ? "text-blue-600"
+                                                    : "text-yellow-600"
+                                            }`} />
+                                            <span className="text-xs leading-tight">{challenge.replace(/^•\s/, "")}</span>
                                           </li>
                                         ))}
                                     </ul>
@@ -624,7 +727,7 @@ export default function DashboardPage() {
                                 </Card>
 
                                 <Card
-                                  className={`border-l-4 ${
+                                  className={`border-l-4 h-full ${  
                                     type === "nurturer"
                                       ? "border-l-green-500"
                                       : type === "integrator"
@@ -634,32 +737,72 @@ export default function DashboardPage() {
                                           : "border-l-yellow-500"
                                   }`}
                                 >
-                                  <CardHeader>
+                                  <CardHeader className="py-2">
                                     <CardTitle
-                                      className={`flex items-center ${
+                                      className={`flex items-center gap-2 text-[15px] ${
                                         type === "nurturer"
-                                          ? "text-green-700"
+                                          ? "text-green-600"
                                           : type === "integrator"
-                                            ? "text-purple-700"
+                                            ? "text-purple-600"
                                             : type === "synergist"
-                                              ? "text-blue-700"
-                                              : "text-yellow-700"
+                                              ? "text-blue-600"
+                                              : "text-yellow-600"
                                       }`}
                                     >
-                                      <GraduationCap className="w-6 h-6 mr-2" />
+                                      {type === "nurturer" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340415/Development_Opportunities_icon_green_x0ejdp.png"
+                                          alt="Development Opportunities Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : type === "integrator" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340415/Development_Opportunities_icon_purple_cd2uej.png"
+                                          alt="Development Opportunities Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : type === "synergist" ? (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340415/Development_Opportunities_icon_blue_dlokrs.png"
+                                          alt="Development Opportunities Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      ) : (
+                                        <Image
+                                          src="https://res.cloudinary.com/drkudvyog/image/upload/v1740340414/Development_Opportunities_icon_yellow_nhk1z1.png"
+                                          alt="Development Opportunities Icon"
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 mr-2"
+                                        />
+                                      )}
                                       Development Opportunities
                                     </CardTitle>
                                   </CardHeader>
-                                  <CardContent>
-                                    <ul className="space-y-2">
+                                  <CardContent className="p-2">
+                                    <ul className="space-y-1.5">
                                       {explanation
                                         .split("\n\n")[4]
                                         .split("\n")
                                         .slice(1)
                                         .map((opportunity, idx) => (
                                           <li key={idx} className="flex items-start">
-                                            <ChevronRight className="w-4 h-4 mr-2 text-purple-500 flex-shrink-0 mt-1" />
-                                            <span>{opportunity.replace(/^\d+\.\s/, "")}</span>
+                                            <ChevronRight className={`w-3 h-3 mr-1 flex-shrink-0 mt-0.5 ${
+                                              type === "nurturer"
+                                                ? "text-green-600"
+                                                : type === "integrator"
+                                                  ? "text-purple-600"
+                                                  : type === "synergist"
+                                                    ? "text-blue-600"
+                                                    : "text-yellow-600"
+                                            }`} />
+                                            <span className="text-xs leading-tight">{opportunity.replace(/^\d+\.\s/, "")}</span>
                                           </li>
                                         ))}
                                     </ul>
@@ -672,71 +815,70 @@ export default function DashboardPage() {
                       ))}
                   </div>
                 </div>
-              </div>
-              <CardContent className="p-6 bg-white rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.3)] mb-6 mt-12 overflow-hidden">
-                <h2 className="text-2xl font-bold flex items-center text-black mb-6">
-                  <Image
-                    src="https://res.cloudinary.com/drkudvyog/image/upload/v1733951551/Areas_of_Improvement_icon_duha_kplce1.png"
-                    alt="Areas of Improvement Icon"
-                    width={24}
-                    height={24}
-                    className="mr-2"
-                  />
-                  Recommended Focus Areas
-                </h2>
-                <p className="mb-6 text-[#5b06be] font-medium">
-                  Based on your natural abilities and prerequisites, these are the top three areas where you should
-                  focus your real estate career:
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {focusAreas.map((area, index) => {
-  return (
-    <div
-      key={index}
-      className="bg-white rounded-lg shadow-sm p-6 flex flex-col items-center text-center transition-all duration-300 hover:shadow-md"
-                        >
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100/20 to-transparent rounded-xl" />
+
+                {/* Recommended Focus Areas */}
+                <CardContent className="p-4 bg-white rounded-xl border border-[#ddd] mb-4 mt-6 overflow-hidden">
+                  <h2 className="text-[21px] font-bold flex items-center text-gray-900 mb-3">
+                    <Image
+                      src="https://res.cloudinary.com/drkudvyog/image/upload/v1733953951/Areas_of_improvement_icon_duha_u5o65j.png"
+                      alt="Areas of Improvement Icon"
+                      width={20}
+                      height={20}
+                      className="w-5 h-5 mr-2"
+                    />
+                    Recommended Focus Areas
+                  </h2>
+                  <p className="text-[15px] font-semibold text-gray-600 mb-3">
+                    Based on your natural abilities and prerequisites, these are the top three areas where you should
+                    focus your real estate career:
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {focusAreas.map((area, index) => (
+                      <div
+                        key={index}
+                        className="bg-white rounded-lg p-4 flex flex-col items-center text-center transition-all duration-300 border border-[#ddd]"
+                      >
                         <div className="flex-grow">
                           {!showInfo[index] ? (
                             <div className="flex flex-col items-center justify-center h-full">
-                              <div className="relative w-32 h-32 mb-4">
+                              <div className="relative w-28 h-28 mb-3">
                                 <svg className="w-full h-full transform -rotate-90">
-                                <circle
-  className="text-[#F4F4F5]"
-  strokeWidth="10"
-  stroke="currentColor"
-  fill="transparent"
-  r="58"
-  cx="64"
-  cy="64"
-/>
-<circle
-  className="text-[#5b06be] transition-all duration-1000 ease-in-out"
-  strokeWidth="10"
-  strokeDasharray={364}
-  strokeDashoffset={364 * (1 - area.value / 100)}
-  strokeLinecap="round"
-  stroke="currentColor"
-  fill="transparent"
-  r="58"
-  cx="64"
-  cy="64"
-/>
+                                  <circle
+                                    className="text-[#F4F4F5]"
+                                    strokeWidth="8"
+                                    stroke="currentColor"
+                                    fill="transparent"
+                                    r="52"
+                                    cx="56"
+                                    cy="56"
+                                  />
+                                  <circle
+                                    className="text-[#5b06be] transition-all duration-1000 ease-in-out"
+                                    strokeWidth="8"
+                                    strokeDasharray={327}
+                                    strokeDashoffset={327 * (1 - area.value / 100)}
+                                    strokeLinecap="round"
+                                    stroke="currentColor"
+                                    fill="transparent"
+                                    r="52"
+                                    cx="56"
+                                    cy="56"
+                                  />
                                 </svg>
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                  <span className="text-3xl font-bold text-[#5b06be]">{area.value}%</span>
+                                  <span className="text-2xl font-bold text-[#5b06be]">{area.value}%</span>
                                 </div>
                               </div>
-                              <h3 className="text-2xl font-bold text-[#5b06be] mb-4 mt-6 text-center">{area.title}</h3>
-                              <p className="text-sm text-gray-600 text-center leading-relaxed">{area.description}</p>
+                              <h3 className="text-[19px] font-black text-[#5b06be] mb-2 mt-3 text-center">{area.title}</h3>
+                              <p className="text-[15px] font-semibold text-gray-600 mt-1">{area.description}</p>
                             </div>
                           ) : (
                             <div className="h-full flex flex-col">
-                              <h3 className="text-2xl font-bold text-[#5b06be] mb-4">{area.title}</h3>
-                              <p className="text-sm text-gray-600 mb-6 flex-grow leading-relaxed">{area.description}</p>
-                              <div className="bg-white rounded-lg p-4 shadow-[0_0_10px_rgba(125,59,219,0.3)]">
-                                <h4 className="font-semibold text-[#7d3bdb] mb-2">Tips to Improve:</h4>
-                                <p className="text-sm text-gray-600 leading-relaxed">{area.tips}</p>
+                              <h3 className="text-[19px] font-black text-[#5b06be] mb-2">{area.title}</h3>
+                              <p className="text-[15px] font-semibold text-gray-600 mb-3 flex-grow leading-relaxed">{area.description}</p>
+                              <div className="bg-white rounded-lg p-3 shadow-[0_0_10px_rgba(125,59,219,0.3)]">
+                                <h4 className="font-semibold text-[15px] text-[#7d3bdb] mb-1">Tips to Improve:</h4>
+                                <p className="text-[15px] font-semibold text-gray-600 leading-relaxed">{area.tips}</p>
                               </div>
                             </div>
                           )}
@@ -749,131 +891,163 @@ export default function DashboardPage() {
                             newShowInfo[index] = !newShowInfo[index]
                             setShowInfo(newShowInfo)
                           }}
-                          className="mt-6 bg-[#5b06be] text-white hover:bg-[#4a05a0] transition-all duration-200 rounded-full w-full px-6 py-3 text-base flex items-center justify-center gap-2"
+                          className="mt-4 bg-[#5b06be] text-white hover:bg-[#4a05a0] transition-all duration-200 rounded-full w-full px-4 py-2 text-[15px] flex items-center justify-center gap-2"
                         >
                           {showInfo[index] ? (
                             <>
-                              <ChartBar className="w-5 h-5" />
+                              <Image 
+                                src="https://res.cloudinary.com/drkudvyog/image/upload/v1739900545/view_Metric_icon_white_arbbwr.png"
+                                alt="View Metric Icon"
+                                width={16}
+                                height={16}
+                                className="w-4 h-4"
+                              />
                               View Metric
                             </>
                           ) : (
                             <>
-                              <Info className="w-5 h-5" />
+                              <Image 
+                                src="https://res.cloudinary.com/drkudvyog/image/upload/v1739897624/info_icon_white_xk1opa.png"
+                                alt="Info Icon"
+                                width={16}
+                                height={16}
+                                className="w-4 h-4"
+                              />
                               View Info
                             </>
                           )}
                         </Button>
                       </div>
-                    )
-                  })}
-                </div>
-              </CardContent>
-              <div className="space-y-8">
-                <Card className="bg-white rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.3)] mt-12">
-                  <CardContent className="p-8 shadow-[0_0_20px_rgba(0,0,0,0.2mt-12">
-                    <h2 className="text-3xl font-bold text-black mb-6 flex items-center justify-start">
-                      <Image
-                        src="https://res.cloudinary.com/drkudvyog/image/upload/v1739454236/Key_Strengths_Action_Steps_icon_duha_wnldnl.png"
-                        alt="Key Strengths & Action Steps Icon"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 mr-3"
-                      />
-                      Key Strengths & Action Steps
-                    </h2>
-                    <p className="text-lg mb-6 text-gray-700">
-                      These are the most important real estate strengths. Use them to excel in your career!
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                      {strengthsData.slice(0, 3).map((strength, index) => (
-                        <div
-  key={index}
-  className="bg-white rounded-lg p-6 shadow-[0_0_10px_rgba(0,0,0,0.2)] transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,0,0,0.25)] group"
->
-<div className="flex items-center justify-center mb-4">
-  <h3 className="text-2xl font-bold text-[#5b06be] text-center">{strength.title}</h3>
-</div>
-<div className="flex flex-col items-center justify-center h-16">
-  <span className="text-3xl font-bold text-[#5b06be] mb-1">{strength.progressValue}%</span>
-  <div className="w-full bg-[#F4F4F5] rounded-full h-2">
-    <div
-      className="bg-[#5b06be] h-2 rounded-full"
-      style={{ width: `${strength.progressValue}%` }}
-    ></div>
-  </div>
-</div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-8">
-                      {strengthsData.slice(3, 4).map((strength, index) => (
-                        <div
-                          key={index}
-                          className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-[0_0_10px_rgba(251,179,80,0.3)] transition-all duration-300 hover:shadow-[0_0_15px_rgba(251,179,80,0.35)] group"
-                        >
-                          <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-2xl font-bold text-[#fbb350]">{strength.title}</h3>
-                            <div className="w-16 h-16 rounded-full bg-[#fbb350] flex items-center justify-center">
-                              <Star className="w-8 h-8 text-white transform group-hover:scale-110 transition-transform duration-300" />
-                            </div>
-                          </div>
-                          <div className="mb-4">
-                            <div className="rounded-lg shadow-[0_0_10px_rgba(255,180,0,0.3)] p-4">
-                              <div className="flex justify-between items-center mb-2">
-                                <span className="text-sm font-medium text-gray-600">{strength.progressLabel}</span>
-                                <span className="text-sm font-bold text-[#fbb350]">{strength.progressValue}%</span>
-                              </div>
-                              <Progress 
-  value={strength.progressValue} 
-  className="h-2 mb-2 bg-zinc-100 [&>div]:bg-[#fbb350]"
-    indicatorColor="#F4F4F5" />
-                            </div>
-                          </div>
-                          <div className="grid grid-cols-2 gap-4 mb-4">
-                            <div className="bg-white rounded-lg shadow-[0_0_10px_rgba(0,0,0,0.1)] p-4">
-                              <h4 className="font-semibold text-[#fbb350] mb-2 flex items-center">
-                                <TrendingUp className="w-4 h-4 mr-2" />
-                                Strong Points
-                              </h4>
-                              <ul className="list-disc list-inside text-sm text-gray-600">
-                                {strength.strongPoints.map((point, idx) => (
-                                  <li key={idx}>{point}</li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div className="bg-white rounded-lg shadow-[0_0_10px_rgba(0,0,0,0.1)] p-4">
-                              <h4 className="font-semibold text-[#fbb350] mb-2 flex items-center">
-                                <Zap className="w-4 h-4 mr-2" />
-                                Areas to Improve
-                              </h4>
-                              <ul className="list-disc list-inside text-sm text-gray-600">
-                                {strength.improvementAreas.map((area, idx) => (
-                                  <li key={idx}>{area}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
-                          <div className="bg-white rounded-lg p-4 shadow-[0_0_10px_rgba(255,180,0,0.2)]">
-                            <h4 className="font-semibold text-[#fbb350] mb-2 flex items-center">
-                              <Award className="w-4 h-4 mr-2" />
-                              Value Proposition
-                            </h4>
-                            <p className="text-sm text-gray-700">
-                              Leveraging your expertise in {strength.title.toLowerCase()} can significantly increase
-                              your deal flow and client satisfaction. Focus on this strength to stand out in the market
-                              and drive your success.
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    ))}
+                  </div>
                   </CardContent>
-                </Card>
+
+{/* Key Strengths & Action Steps */}
+<div>
+<div className="bg-white rounded-xl overflow-hidden border border-[#ddd] mt-4 mb-4">
+    <div className="p-4">
+      <h2 className="text-[21px] font-bold flex items-center text-gray-900 mb-2">
+        <Image
+          src="https://res.cloudinary.com/drkudvyog/image/upload/v1739897407/Key_Strengths_Action_Steps_gjkxrh.png"
+          alt="Key Strengths & Action Steps Icon"
+          width={20}
+          height={20}
+          className="w-5 h-5 mr-2"
+        />
+        Key Strengths & Action Steps
+      </h2>
+      <p className="text-[15px] font-semibold text-gray-600 mb-3">
+        These are the most important real estate strengths. Use them to excel in your career!
+      </p>
+      <div className="mt-4 mb-6">
+        {strengthsData.slice(3, 4).map((strength, index) => (
+          <div
+            key={index}
+            className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-4 border border-[#ddd] transition-all duration-300 group"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-[19px] font-black text-[#fbb350]">{strength.title}</h3>
+              <div className="w-12 h-12 rounded-full bg-[#fbb350] flex items-center justify-center">
+                <Star className="w-6 h-6 text-white transform group-hover:scale-110 transition-transform duration-300" />
               </div>
-            </CardContent>
-          </CardHeader>
-        </Card>
+            </div>
+            <div className="mb-3">
+              <div className="rounded-lg border border-[#ddd] p-3">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-[15px] font-semibold text-gray-600">{strength.progressLabel}</span>
+                  <span className="text-[15px] font-semibold text-[#fbb350]">{strength.progressValue}%</span>
+                </div>
+                <Progress 
+                  value={strength.progressValue} 
+                  className="h-1.5 mb-1 bg-zinc-100 [&>div]:bg-[#fbb350]"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <div className="bg-white rounded-lg shadow-[0_0_10px_rgba(0,0,0,0.1)] p-3">
+                <h4 className="font-semibold text-[15px] text-[#fbb350] mb-1 flex items-center">
+                  <Image 
+                    src="https://res.cloudinary.com/drkudvyog/image/upload/v1739899489/Strong_points_icon_yellow_nqi6t7.png"
+                    alt="Strong Points Icon"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4 mr-1"  
+                  />
+                  Strong Points
+                </h4>
+                <ul className="list-disc list-inside text-[15px] font-semibold text-gray-600">
+                  {strength.strongPoints.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-white rounded-lg shadow-[0_0_10px_rgba(0,0,0,0.1)] p-3">
+                <h4 className="font-semibold text-[15px] text-[#fbb350] mb-1 flex items-center">
+                  <Image 
+                    src="https://res.cloudinary.com/drkudvyog/image/upload/v1739899489/Areas_of_improvement_icon_yellow_epwqfk.png"
+                    alt="Areas to Improve Icon"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4 mr-1"
+                  />
+                  Areas to Improve
+                </h4>
+                <ul className="list-disc list-inside text-[15px] font-semibold text-gray-600">
+                  {strength.improvementAreas.map((area, idx) => (
+                    <li key={idx}>{area}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg p-3 shadow-[0_0_10px_rgba(255,180,0,0.2)]">
+              <h4 className="font-semibold text-[15px] text-[#fbb350] mb-1 flex items-center">
+                <Image 
+                  src="https://res.cloudinary.com/drkudvyog/image/upload/v1739899489/Value_Proposion_icon_yellow_jsnvk9.png"
+                  alt="Value Proposition Icon"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4 mr-1"
+                />
+                Value Proposition
+              </h4>
+              <p className="text-[15px] font-semibold text-gray-700">
+                Leveraging your expertise in {strength.title.toLowerCase()} can significantly increase
+                your deal flow and client satisfaction. Focus on this strength to stand out in the market
+                and drive your success.
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-3">
+        {strengthsData.slice(0, 3).map((strength, index) => (
+          <div
+            key={index}
+            className="bg-white rounded-lg p-3 border border-[#ddd] transition-all duration-300 hover:border border-[#ddd] group"
+          >
+            <div className="flex items-center justify-center mb-2">
+              <h3 className="text-[15px] font-semibold text-[#5b06be] text-center">{strength.title}</h3>
+            </div>
+            <div className="flex flex-col items-center justify-center h-12">
+              <span className="text-xl font-bold text-[#5b06be] mb-1">{strength.progressValue}%</span>
+              <div className="w-full bg-[#F4F4F5] rounded-full h-1.5">
+                <div
+                  className="bg-[#5b06be] h-1.5 rounded-full"
+                  style={{ width: `${strength.progressValue}%` }}
+                ></div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-  )
+  </div>
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
